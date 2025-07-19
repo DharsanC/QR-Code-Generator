@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>QR Code Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="QR-Code-Generator.css">
+</head>
+<body>
+
+<header class="headerContent">
+<div class="logoImage">
+<img id="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTng_w8B5MdRqLKzJuwY7Gkml9WscVt_sByocMhSLAc86flZpgzGJ1YZoKi9nCZ9yv9bwM&usqp=CAU">
+</div>
+
+<div class="list">
+<ul class="menu">
+<li><a href="file:///C:/Users/user/Documents/QR-Code-Generator.html">Home</a></li>
+<li><a href="#generateHead">Generate QR</a></li>
+</ul>
+</div>
+
+<div class="containBtn">
+<button class="burgerBtn">
+<span class="bar"></span>
+<span class="bar barMiddle"></span>
+<span class="bar"></span>
+</button>
+</div>
+
+</header>
+
+<div class="containerContent">
+
+<div class="content">
+<h1 id="head">QR CODE <br>GENERATOR</h1>
+<p id="para">Here for QR Code Generate purpose.</p>
+</div>
+
+<div class="Image">
+<img id="img" src="https://img.freepik.com/free-vector/smartphone-scanning-qr-code_52683-43999.jpg?ga=GA1.1.1856011780.1747486796&semt=ais_items_boosted&w=740">
+</div>
+
+</div>
+
+
+<h2 id="generateHead">Generate QR Code</h2>
+
+<div class="containerScanner">
+
+<div class="input">
+<h1>QR Code</h1>
+
+<div class="inputField">
+<input type="text" class="in" id="labelArea" required>
+<label class="lab" for="labelArea">Enter a Text or URL</label>
+</div>
+
+<button id="btn" onclick="generate()">Generate QR Scanner</button>
+</div>
+
+<div class="scanner">
+<div id="qr"></div>
+<h2 id="pre">Enter Text or URL and click the generate button and get your QR Code</h2>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+function generate(){
+const inputInfo = document.querySelector(".in").value;
+const scanner = document.getElementById("qr");
+scanner.innerHTML="";
+if(inputInfo!==""){
+
+new QRCode(scanner,{text:inputInfo,width:180,height:180});
+document.getElementById("qr").style.display="block";
+document.getElementById("pre").style.display="none";
+
+}
+
+else{
+alert("Enter a Text or URL.")
+document.getElementById("pre").style.display="block";
+document.getElementById("qr").style.display="none";
+}
+
+}
+
+const navbar = document.querySelector(".burgerBtn");
+
+const menubar = document.querySelector(".menu");
+
+navbar.addEventListener("click", ()=>{
+
+navbar.classList.toggle("active");
+menubar.classList.toggle("active");
+
+});
+
+</script>
+</body>
+</html>
